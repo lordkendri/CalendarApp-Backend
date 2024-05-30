@@ -1,3 +1,5 @@
+const path = require('path');
+
 //! Forma de Importacion normal en node
 const express = require('express');
 
@@ -26,8 +28,9 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events', require('./routes/events'));
 
+//Solucion error
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
 //? Escuchar peticiones
